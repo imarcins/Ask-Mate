@@ -1,0 +1,32 @@
+body {
+    font-size: 70px;
+    text-align:center;
+    background: antiquewhite;
+}
+
+h2 {
+    text-align: left;
+    background:burlywood;
+}
+
+
+
+#header {
+    font-size: 60px;
+    background: #445566 ;
+    margin: 0;
+    padding: 10px;
+
+}
+
+hr {
+
+    border: 1px solid red;
+    width: 120px;
+    height: 0px;
+
+}
+
+#signout {
+
+}

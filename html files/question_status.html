@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+<style>
+
+
+.button1 {
+    background-color: chartreuse;
+    color: darkblue;
+    border: 2px solid #008CBA;
+    height: 50px;
+    width: 300px;
+}
+
+.button1:hover {
+    background-color: #008CBA;
+    color: white;
+    height: 50px;
+    width: 300px;
+}
+table, th, td {
+    border: 1px solid black;
+
+}
+    </style>
+</head>
+<body style="background-color: #9999FF; color: #000033">
+
+<h1><div style="text-align: center;">
+        QUESTION {{ question["id"] }} <br> {{ question["title"] }} </div>
+    </h1><hr>
+
+        <thead>
+                <th><h3> Message: <hr><br> <b>{{ question["message"] }}</b></h3><hr></th>
+        </thead>
+    <br>
+        <thead>
+                    <th><h3>Comments: </h3><hr></th>
+        </thead>
+        <br>
+    <div style="text-align:center">
+    <table border="2" style="margin: auto;">
+
+        <tbody>
+        <table style ="width: 95%"><h3>
+         <tr>
+            <th style ="width: 5%; height: 1em">ID</th>
+            <th style ="width: 10%; height: 1em">Submission time</th>
+             <th style ="width: 60%; height: 1em">Message</th>
+            <th style ="width: 10%; height: 1em">Vote</th>
+             <th style ="width: 10%; height: 1em">Question ID</th>
+        </tr></table>
+        {% for answer in answers %}
+    <table style ="width: 95%"><h3>
+        <tr>
+        <th style ="width: 5%; height: 3em">{{answer["id"]}}</th>
+        <th style ="width: 10%; height: 3em">{{answer["submission_time"]}}</th>
+        <th style ="width: 60%; height: 3em">{{answer["message"]}}</th>
+        <th style ="width: 10%; height: 3em">{{answer["vote_number"]}} </th>
+        <th style ="width: 10%; height: 3em">{{answer["question_id"]}}</th> </tr>
+</h3>
+    </table>
+    {% endfor %}
+        </tbody>
+    </table></div><br><hr>
+
+    <div style="text-align: left;">
+    <a href ="{{  url_for('add_answer', question_id = question["id"]) }}"><button class="button1">Add new answer</button></a></div>
+<br><div style="text-align: center;">
+    <a href="/list"><button class="button1">Go back to menu</button></a></div>
+</body>
+</html>

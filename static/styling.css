@@ -1,0 +1,177 @@
+body {
+    background: #faebd7;
+    text-align: center;
+}
+head {
+    background: #445566;
+    text-align: center;
+
+}
+
+h4 {
+    text-align: right;
+    font-family: Arial;
+}
+
+h2 {
+    text-align: left;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#question {
+    text-align: center;
+    font-size: 60px;
+    background: #445566 ;
+    margin: 0;
+    padding: 10px;
+}
+
+#info {
+    text-align: center;
+    text-underline: #b2b8ad ;
+}
+p {
+    text-align: left;
+}
+
+
+
+.my-button {
+	box-shadow:inset 0px 0px 14px -3px #f2fadc;
+	background:linear-gradient(to bottom, #dbe6c4 5%, #9ba892 100%);
+	background-color:#dbe6c4;
+	border-radius:6px;
+	border:1px solid #b2b8ad;
+	display:flex;
+	cursor:pointer;
+	color:#757d6f;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ced9bf;
+	margin-left:5px;
+}
+.my-button:hover {
+	background:linear-gradient(to bottom, #9ba892 5%, #dbe6c4 100%);
+	background-color:#9ba892;
+}
+.my-button:active {
+	position:relative;
+	top:1px;
+}
+#votes {
+	text-align: center;
+}
+
+.info {
+	text-align: left;
+	font-weight: bold;
+}
+
+.foxnav {
+  max-width: 100%;
+  padding: 0 2em;
+  background-color: #deb887;
+  border-radius: 0.3rem;
+  line-height: 4em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.foxnav-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 1em;
+}
+.foxnav-items > *:nth-child(1) {
+  grid-column: 1 / 2;
+}
+.foxnav-items > *:nth-child(2) {
+  grid-column: 2 / 3;
+}
+.foxnav-items > *:nth-child(3) {
+  grid-column: 3 / 4;
+}
+.foxnav-items > *:nth-child(4) {
+  grid-column: 4 / 5;
+}
+.foxnav-items > *:nth-child(5) {
+  grid-column: 5 / 6;
+}
+.foxnav-items > *:nth-child(6) {
+  grid-column: 6 / 7;
+}
+
+.foxnav-item {
+  padding: 0 0.75em;
+  display: inline;
+  grid-row: 1/1;
+}
+.foxnav-item.active .item-link {
+  color: #2DA;
+}
+
+.item-link {
+  color: #456;
+  text-decoration: none;
+  transition: color 256ms;
+}
+.item-link:hover {
+  color: #445566;
+  text-decoration: underline;
+}
+
+.separator {
+  width: 1px;
+  height: 60%;
+  margin: 10% 0;
+
+  align-self: center;
+}
+
+.foxnav-indicator {
+  --index: 1;
+  height: 3px;
+  background-color: #445566;
+  border-radius: 3px 3px 0 0;
+  grid-column: var(--index)/calc(var(--index) + 1) !important;
+  grid-row: 1/1;
+  align-self: end;
+}
+
+body {
+  min-height: 100vh;
+  background: burlywood;
+  font-family: "Roboto", sans-serif;
+  display: grid;
+
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h1 {
+    text-align: left;
+}
+
+.main {
+display: inline-flex;
+
+}
+
+#signout {
+    float: right;
+
+}

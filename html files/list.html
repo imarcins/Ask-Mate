@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styling.css')}}">
+
+</head>
+<body>
+<h4 class="log">You are logged in as: {{ username }}</h4>
+<form action="{{ url_for("logout")}}" method="POST">
+    <button type="submit" class="my-button" id="signout">Sign out</button>
+</form>
+<h1 id="question">Questions Page</h1>
+<h2 id="info">Feel free to ask anything about programming!</h2>
+    <form action="{{ url_for('list_page') }}">
+        <label for="search-input">Search for a question:</label>
+        <input id="name-input" type="text" name="search-for-question">
+        <button type="submit">Search</button>
+    </form>
+<nav class="foxnav">
+  <ul class="foxnav-items">
+    <li class="foxnav-item"><a class="item-link" onclick="select(this)" href="#">🙋‍ Add a question</a></li>
+    <li class="foxnav-item"><a class="item-link" onclick="select(this)" href="#">📖 Questions & Answers</a></li>
+    <div class="separator"></div>
+    <div class="foxnav-indicator"></div>
+  </ul>
+</nav>
+
+{% for question in questions %}
+
+    <h1>{{ question.id + 1}}. {{ question.title }}</h1>
+    {% if question.image %}
+        <img src="{{ question.image }}" alt="">
+    {% endif %}
+    <p>{{ question.message }}</p>
+    <p class="info">Votes: {{ question.vote_number }}</p>
+    <p class="info">Views: {{ question.view_number }}</p>
+    <p class="info">Submission time: {{ question.submission_time }}</p>
+    <br>
+    <br>
+    <div class="main">
+    <form action="{{ url_for('vote_up', question_id=question.id) }}" method="POST">
+        <button type="submit" class="my-button" id="button0">Vote up</button>
+
+    </form>
+    <form action="{{ url_for('vote_down', question_id=question.id) }}" method="POST">
+        <button type="submit" class="my-button" id="button1">Vote down</button>
+    </form>
+
+    <form action="{{ url_for('delete_question', question_id=question.id) }}" method="POST">
+        <button type="submit" class="my-button" id="button2">Delete</button>
+    </form>
+
+    <form action="{{ url_for('edit_question', question_id=question.id) }}" method="GET">
+        <button type="submit" class="my-button" id="button3">Edit</button>
+    </form>
+
+    <form action="{{ url_for('add_comment', question_id=question.id) }}" method="GET">
+        <button type="submit" class="my-button">Add a comment!</button>
+    </form>
+
+    {% if not question['image']%}
+        <form action="{{ url_for('add_image', question_id=question.id) }}" method="GET">
+            <button type="submit" class="my-button" id="button4">Add image</button>
+        </form>
+    {% endif %}
+    </div>
+    <hr/>
+    <h3>Comments</h3>
+    <hr/>
+    {% for comment in comments %}
+
+       {% if comment.question_id == question.id %}
+            <p>{{ comment.message }}</p>
+            <p>{{ comment.submission_time }}</p>
+            <div class="buttons">
+            <form action="{{ url_for('edit_comment', comment_id=comment.id) }}" method="GET">
+                <button type="submit" class="my-button">Edit Comment</button>
+            </form>
+            <form action="{{ url_for('delete_comment', comment_id=comment.id) }}" method="POST">
+                <button type="submit" class="my-button">Delete comment</button>
+            </form>
+        {% endif %}
+    {% endfor %}
+    {% for tag in tags %}
+    {% if tag.question_id == question.id %}
+        <a href="{{ 'https://www.google.com/search?q=' + tag.name }}">#{{ tag.name }}</a>
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+
+
+    <hr>
+{% endfor %}
+</body>
+</html>
